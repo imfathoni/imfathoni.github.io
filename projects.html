@@ -54,8 +54,218 @@
                                             </div>
                                         </div>
                                         <div class="p-5">
-                                            <div class='tableauPlaceholder' id='viz1686140654504' style='position: relative'><noscript><a href='#'><img alt='Dashboard 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Sa&#47;SalesDashboard_16730107845540&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='SalesDashboard_16730107845540&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Sa&#47;SalesDashboard_16730107845540&#47;Dashboard1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1686140654504');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1280px';vizElement.style.height='747px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1280px';vizElement.style.height='747px';} else { vizElement.style.width='100%';vizElement.style.height='2277px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
-                                            </div>
+                                            <div <!doctype html>
+<html>
+<head>
+ <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Tema 16</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="stylesheet" href="admin/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="admin/bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="admin/bower_components/Ionicons/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="admin/dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+        page. However, you can choose any other skin. Make sure you
+        apply the skin class to the body tag so the changes take effect. -->
+  <link rel="stylesheet" href="admin/dist/css/skins/skin-blue.min.css">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <!-- Google Font -->
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+
+<body>
+	<?php
+	include "tanggal.php";
+include "koneksi.php";
+	$pilih=mysqli_query($koneksi,"select tema from tema where id=1");
+$tema=mysqli_fetch_row($pilih);
+ob_start();  
+ system('ipconfig /all');  
+   $mycom=ob_get_contents();  
+   ob_clean();  
+ $findme = "Physical";  
+ $pmac = strpos($mycom, $findme);  
+ $mac=substr($mycom,($pmac+36),17);  
+ $serial=md5($mac);
+$query=mysqli_query($koneksi,"select * from kode where judul='$serial'");
+$hasil=mysqli_fetch_array($query);
+$aktivasi=$hasil[2];
+$cekkode=sha1($serial);
+$jml=mysqli_num_rows($query);
+if($jml>=1 and $aktivasi==$cekkode){
+$ambilwlogo=mysqli_query($koneksi,"select warna from warnabg where id=3");
+$logoku=mysqli_fetch_array($ambilwlogo);
+$ambilw=mysqli_query($koneksi,"select warna from warnabg where id=1");
+$warna=mysqli_fetch_array($ambilw);
+$ambilwbg=mysqli_query($koneksi,"select warna from warnabg where id=2");
+$bg=mysqli_fetch_array($ambilwbg);
+$cari=mysqli_query($koneksi,"select * from informasi where id=4");
+$isi=mysqli_fetch_array($cari);
+$cari1=mysqli_query($koneksi,"select * from informasi where id=5");
+$isi1=mysqli_fetch_array($cari1);
+?>
+	<div id="bgr"><script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			setInterval(function () {
+				$('#bgr').load('ubahbg.php')
+			}, 1000);
+		});
+				</script></div>
+<style type="text/css">
+body
+{
+
+background-repeat: no-repeat;
+background-color: #fff;
+background-size:cover;
+} 
+#trik_atas {position:fixed;_position:absolute;bottom:0px; left:0;right:0;clip:inherit;z-index: 2;
+_top:expression(document.documentElement.scrollTop+
+document.documentElement.clientHeight-this.clientHeight);
+_left:expression(document.documentElement.scrollLeft+
+document.documentElement.clientWidth - offsetWidth);}
+
+	#trik_bawah_info {position:fixed;_position:absolute;bottom:50px; left:0;right:0;clip:inherit;z-index: 2;
+_top:expression(document.documentElement.scrollTop+
+document.documentElement.clientHeight-this.clientHeight);
+_left:expression(document.documentElement.scrollLeft+
+document.documentElement.clientWidth - offsetWidth);}
+	#trik_kiri {position:fixed;_position:absolute;bottom:40px; left:0;right:0;clip:inherit;z-index: 0;
+_top:expression(document.documentElement.scrollTop+
+document.documentElement.clientHeight-this.clientHeight);
+_left:expression(document.documentElement.scrollLeft+
+document.documentElement.clientWidth - offsetWidth);}
+	
+	#trik_kanan {position:fixed;_position:absolute;bottom:40px; left:800;right:0;clip:inherit;z-index: 0;
+_top:expression(document.documentElement.scrollTop+
+document.documentElement.clientHeight-this.clientHeight);
+_left:expression(document.documentElement.scrollLeft+
+document.documentElement.clientWidth - offsetWidth);}
+	
+#trik_tengah {position:fixed;_position:absolute;left:0;right:0;clip:inherit;z-index: 2;
+_top:expression(document.documentElement.scrollTop+
+document.documentElement.clientHeight-this.clientHeight);
+_left:expression(document.documentElement.scrollLeft+
+document.documentElement.clientWidth - offsetWidth);}	
+	
+	#trik_tengah_kanan {position:fixed;_position:absolute;bottom:274px; left:800;right:0;clip:inherit;z-index: 2;
+_top:expression(document.documentElement.scrollTop+
+document.documentElement.clientHeight-this.clientHeight);
+_left:expression(document.documentElement.scrollLeft+
+document.documentElement.clientWidth - offsetWidth);}
+
+#trik_tengah_kanan_atas {position:fixed;_position:absolute;bottom:700px; left:800;right:0;clip:inherit;z-index: 2;top:0px;
+_top:expression(document.documentElement.scrollTop+
+document.documentElement.clientHeight-this.clientHeight);
+_left:expression(document.documentElement.scrollLeft+
+document.documentElement.clientWidth - offsetWidth);}
+	
+#float-left{position:fixed;_position:absolute;top:0px;float:left; margin-left:0px;z-index:10;
+clip:inherit;_top:expression(document.documentElement.scrollTop+
+document.documentElement.clientHeight-this.clientHeight);
+_left:expression(document.documentElement.scrollLeft+
+document.documentElement.clientWidth - offsetWidth);}
+#float-right{
+position:fixed;_position:absolute;top:0px;float:left; margin-left:800px;z-index:10;
+clip:inherit;_top:expression(document.documentElement.scrollTop+
+document.documentElement.clientHeight-this.clientHeight);
+_left:expression(document.documentElement.scrollLeft+
+document.documentElement.clientWidth - offsetWidth);}
+.atas {
+	font-size: 24px;
+}
+.atas {
+	color: #CCC;
+}
+.atase {
+	font-size: 18px;
+}
+.aaas {
+	font-size: 18px;
+}
+.adasd {
+	font-size: 16px;
+}
+.atas .adasd {
+	color: #CCC;
+}
+.cdd {
+	color: #9C0;
+	font-size: 24px;
+}
+.videoplace {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-style: normal;
+	color: #F60;
+	
+}
+.hurup{font-size:<?=$isi[1];?>;}
+</style>
+
+	<div id="float-left"><script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			setInterval(function () {
+				$('#float-left').load('ubahlogo.php')
+			}, 3000);
+		});
+				</script>	</div><div id="trik_tengah">
+	
+	 <?php
+
+		$stw=mysqli_query($koneksi,"select info from informasi where id=2");
+		$tw=mysqli_fetch_array($stw);
+		
+		?>
+	
+
+		  <iframe name="framevideo" width="<?=$tw[0];?>" height="400" src="showvideo.php" scrolling="no" frameborder="0"></iframe>
+		  
+		  <?php
+		  echo "<br><a href='showvideo.php' target='framevideo' class='btn btn-sm btn-success'>Video </a> ";
+		  $sq=mysqli_query($koneksi,"select * from tv");
+		 while($stasiun=mysqli_fetch_array($sq)){
+			 echo "<a href=tv.php?id=$stasiun[0] target=framevideo class='btn btn-sm btn-danger'>$stasiun[1] </a> ";
+		 }
+					
+			  ?>
+	</div>
+			
+	<div id="trik_tengah_kanan_atas" style="width:466px; height:247px" ><?php include "slideratas.php";?></div>
+		<div id="trik_tengah_kanan" style="width:466px; height:247px"><?php include "sliderbawah.php";?></div>
+		 <?php
+	$pilih=mysqli_query($koneksi,"select * from pengumuman where id=2");
+$isine=mysqli_fetch_row($pilih);
+	?>
+		
+		<div id="trik_bawah_info"><iframe src="<?=$isine[1];?>" width="100%" height="222" scrolling="yes" frameborder="0"></iframe></div>	  
+	<div id="trik_atas"><?php include "tampilow2.php";?></div>	
+<!-- AdminLTE App -->
+<script src="admin/dist/js/adminlte.min.js"></script>
+	<?php
+	}
+else {
+	
+	include "sorry.php";
+}
+ ?>
+</body>
+</html>                                             </div>
                                         </div>
                                     </div>
                                 </div>
